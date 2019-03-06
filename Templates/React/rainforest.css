@@ -1,0 +1,72 @@
+:root {
+    font-family: 'Helvetica', sans-serif;
+	font-size: 15px;
+
+	--colorDark: #d90007;
+	--colorLight: #e77a7d;
+	--colorLighter: #ffdcdc;
+	
+	--grayDark: #dcdcdc;
+	--grayLight: #f5f5f5;
+	
+	--white: #fff;
+	--black: #222;
+	
+	background: var(--white);
+	color: var(--colorDark);
+}
+
+body {
+	margin: 0;
+}
+
+
+
+
+
+
+
+
+/* Header Bar */
+.headerBar {
+	top: 0px;
+	height: 50px;
+	width: 100%;
+	background: var(--black);
+	color: var(--white);
+}
+
+.headerBar span {
+	margin: 0 10px;
+	line-height: 50px;
+}
+
+a { color: var(--white); }
+a:visited { color: var(--white); }
+
+
+
+
+
+
+
+
+/* Main content container */
+.mainContent {
+	margin: 0 auto;
+	text-align: center;
+	max-width: 1000px;
+	padding: 25px;
+}
+
+
+
+
+
+
+
+
+/* Responsive Design */
+@media screen and (max-width: 507px) {
+	.headerBar { text-align: center; }
+}
