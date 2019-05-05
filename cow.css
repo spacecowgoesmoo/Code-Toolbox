@@ -121,9 +121,12 @@ div { cursor: default; }
 }
 
 /* Activates some CSS when a condition is met, that precedes it anywhere in the DOM */
+/* Only if they share the same parent */
 #targetContainer:hover ~ #changeThisID { opacity: 1; }
 
-
+/* Activates some CSS when a condition is met, that immediately follows it */
+/* Only if they share the same parent */
+#targetContainer:hover + #changeThisID { opacity: 1; }
 
 
 
