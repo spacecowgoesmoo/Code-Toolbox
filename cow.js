@@ -154,6 +154,7 @@ body.appendChild(q);
 
 
 // Load data from a REST API
+// Note - Fetch is undefined in IE11
 var url = 'https://api.binance.com/api/v1/klines?symbol=BTCUSDT&interval=1h';
 
 fetch(url).then(function(response) {
