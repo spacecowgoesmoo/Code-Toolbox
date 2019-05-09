@@ -1,9 +1,12 @@
 {
-  "name": "cowTestApp",
-  "scripts": {
-    "dev": "nuxt"
-  },
-  "dependencies": {
-    "nuxt": "^2.6.3"
-  }
+	"name": "cowTestApp",
+	"scripts": {
+		"dev": "nuxt",
+		"build": "nuxt build",
+ 		"start": "nuxt start",
+  		"generate": "nuxt generate"
+	},
+	"dependencies": {
+		"nuxt": "^2.6.3"
+	}
 }
