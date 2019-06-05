@@ -1,8 +1,9 @@
 <template>
 	<div>
 		<cow></cow>
-		<cow></cow>
-		<cow></cow>
+		<cow
+			cowText = 'Lorem Ipsum'
+		></cow>
 	</div>
 </template>
 
