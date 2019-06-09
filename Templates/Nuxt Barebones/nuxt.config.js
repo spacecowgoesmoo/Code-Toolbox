@@ -28,11 +28,6 @@ module.exports = {
   		]
 	},
 
-	// Required for static sitehosting
-	build: {
-		publicPath: 'https://www.taylorcalderone.com/frontendPortfolio/subpages/ifit2019/'
-	},
-
 	// CSS
 	css: ['~/assets/css/style.css']
 }
