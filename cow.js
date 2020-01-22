@@ -187,6 +187,12 @@ function deleteAllOfClass(q) {
 	for (var r=q.length; r>0; r--) { q[0].remove(); }
 }
 
+// Same thing, but for tag names
+function deleteAllOfTagName(q) {
+	var q = document.getElementsByTagName(q);
+	for (var r=q.length; r>0; r--) { q[0].remove(); }
+}
+
 
 
 
