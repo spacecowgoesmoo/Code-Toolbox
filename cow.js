@@ -1,5 +1,5 @@
 function rngRange(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+	return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 
@@ -11,11 +11,11 @@ function rngRange(min, max) {
 
 // Modify classes for many elements at once
 function modifyCSS(selector, property, value) {
-    for (var i=0; i<document.styleSheets.length;i++) {//Loop through all styles
-        //Try add rule
-        try { document.styleSheets[i].insertRule(selector+ ' {'+property+':'+value+'}', document.styleSheets[i].cssRules.length);
-        } catch(err) {try { document.styleSheets[i].addRule(selector, property+':'+value);} catch(err) {}}//IE
-    }
+	for (var i=0; i<document.styleSheets.length;i++) {//Loop through all styles
+		//Try add rule
+		try { document.styleSheets[i].insertRule(selector+ ' {'+property+':'+value+'}', document.styleSheets[i].cssRules.length);
+		} catch(err) {try { document.styleSheets[i].addRule(selector, property+':'+value);} catch(err) {}}//IE
+	}
 }
 
 
@@ -67,7 +67,7 @@ function preventParentClick(e) {				// You need to pass the string 'event' as e 
 
 
 function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
+	return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 
@@ -102,28 +102,41 @@ playAudioBasic("Samples/test.wav")				// This begins file navigation fron the pa
 
 
 
+// Cheap not-unique UUID generator
+// Use uuidv4.js instead
+function cheapID() {
+	return Math.random().toString(36).substr(2, 5);
+}
+
+
+
+
+
+
+
+
 // Not 100% certain this works
 function preloadFiles() {
 	function load(filename) {
-	    var xmlhttp;
-	    if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
-	        xmlhttp = new XMLHttpRequest();
-	    } else { // code for IE6, IE5
-	        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-	    }
-	    xmlhttp.onreadystatechange = function() {
-	        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+		var xmlhttp;
+		if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+			xmlhttp = new XMLHttpRequest();
+		} else { // code for IE6, IE5
+			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 				var q = document.createElement('span');	// Extra stuff to make IE happy. Fuck IE
 				q.setAttribute('id', 'loadSound');		//
 				q.setAttribute('class', 'invisible');	//
 				document.body.appendChild(q);			//
-	            document.getElementById("loadSound").innerHTML = '<embed src="' + filename + '" controller="1" autoplay="0" autostart="0" />';
+				document.getElementById("loadSound").innerHTML = '<embed src="' + filename + '" controller="1" autoplay="0" autostart="0" />';
 				//console.log(cow.filesPreloaded);
 				cow.filesPreloaded++;
-	        }
-	    }
-	    xmlhttp.open("GET", filename, true);
-	    xmlhttp.send();
+			}
+		}
+		xmlhttp.open("GET", filename, true);
+		xmlhttp.send();
 	}
 	
 	// Files go here
@@ -163,7 +176,7 @@ fetch(url).then(function(response) {
 	})
 })
 .catch(function(status) {
-   	alert(status);
+	alert(status);
 });
 
 
@@ -176,7 +189,7 @@ fetch(url).then(function(response) {
 // Do things to all elements with a certain class
 var q = document.getElementsByClassName("cowClass");
 for (var r=0; r<q.length; r++) {
-    q[r].style.backgroundColor = "red";
+	q[r].style.backgroundColor = "red";
 }
 
 // Delete all of a certain class
@@ -228,9 +241,9 @@ window[q].classList.doStuff
 // Fix for button onClick on iOS
 // jQuery, so try a basic HTML touchstart first
 $(document).ready(function(){
-    $('.cowClass').on('click touchstart', function() {
-        // do stuff
-    });
+	$('.cowClass').on('click touchstart', function() {
+		// do stuff
+	});
 });
 
 
@@ -241,8 +254,8 @@ $(document).ready(function(){
 
 
 function getfirstNWordsOfString( n, string ) {
-  var q = string.replace(/\s+/g," ").split(/(?=\s)/gi).slice(0, n).join('')
-  return q
+	var q = string.replace(/\s+/g," ").split(/(?=\s)/gi).slice(0, n).join('')
+	return q
 }
 
 
@@ -253,11 +266,11 @@ function getfirstNWordsOfString( n, string ) {
 
 
 function removeDuplicatesFromArray( q ) {
-  // Hashtable - https://stackoverflow.com/questions/9229645/remove-duplicate-values-from-js-array
-  var seen = {}
-    return q.filter(function(item) {
-        return seen.hasOwnProperty(item) ? false : (seen[item] = true)
-    });
+	// Hashtable - https://stackoverflow.com/questions/9229645/remove-duplicate-values-from-js-array
+	var seen = {}
+		return q.filter(function(item) {
+			return seen.hasOwnProperty(item) ? false : (seen[item] = true)
+		});
 }
 
 
@@ -352,25 +365,25 @@ document.onkeydown = function (e) {
 // Makes .remove() work in IE8-11
 // https://stackoverflow.com/questions/8830839/javascript-dom-remove-element
 (function () {					
-    var typesToPatch = ['DocumentType', 'Element', 'CharacterData'],
-        remove = function () {
-            // The check here seems pointless, since we're not adding this
-            // method to the prototypes of any any elements that CAN be the
-            // root of the DOM. However, it's required by spec (see point 1 of
-            // https://dom.spec.whatwg.org/#dom-childnode-remove) and would
-            // theoretically make a difference if somebody .apply()ed this
-            // method to the DOM's root node, so let's roll with it.
-            if (this.parentNode != null) {
-                this.parentNode.removeChild(this);
-            }
-        };
+	var typesToPatch = ['DocumentType', 'Element', 'CharacterData'],
+		remove = function () {
+			// The check here seems pointless, since we're not adding this
+			// method to the prototypes of any any elements that CAN be the
+			// root of the DOM. However, it's required by spec (see point 1 of
+			// https://dom.spec.whatwg.org/#dom-childnode-remove) and would
+			// theoretically make a difference if somebody .apply()ed this
+			// method to the DOM's root node, so let's roll with it.
+			if (this.parentNode != null) {
+				this.parentNode.removeChild(this);
+			}
+		};
 
-    for (var i=0; i<typesToPatch.length; i++) {
-        var type = typesToPatch[i];
-        if (window[type] && !window[type].prototype.remove) {
-            window[type].prototype.remove = remove;
-        }
-    }
+	for (var i=0; i<typesToPatch.length; i++) {
+		var type = typesToPatch[i];
+		if (window[type] && !window[type].prototype.remove) {
+			window[type].prototype.remove = remove;
+		}
+	}
 })();
 
 
@@ -390,62 +403,62 @@ document.onkeydown = function (e) {
 
 // http://jsfiddle.net/1t0heesf/1/
 // Inverts hex colors
-   
+
 function invertCssColor(color) {
-    var rgb = invertColor(hexColor2rgb(color));
-    return rgb2hexColor(rgb);
+	var rgb = invertColor(hexColor2rgb(color));
+	return rgb2hexColor(rgb);
 }
 
 function invertColor(rgb) {
-    var yuv = rgb2yuv(rgb);
-    var factor = 45;	// 90 is default. Results in stronger contrast.
-    var threshold = 180;
-    yuv.y = clamp(yuv.y + (yuv.y > threshold ? -factor : factor));
-    return yuv2rgb(yuv);
+	var yuv = rgb2yuv(rgb);
+	var factor = 45;	// 90 is default. Results in stronger contrast.
+	var threshold = 180;
+	yuv.y = clamp(yuv.y + (yuv.y > threshold ? -factor : factor));
+	return yuv2rgb(yuv);
 }
 
 function rgb2hexColor(rgb) {
-    return '#' + dec2hex(rgb.r) + dec2hex(rgb.g) + dec2hex(rgb.b);
+	return '#' + dec2hex(rgb.r) + dec2hex(rgb.g) + dec2hex(rgb.b);
 }
 
 function hexColor2rgb(color) {
-    color = color.substring(1); // remove #
-    return {
-        r: parseInt(color.substring(0, 2), 16),
-        g: parseInt(color.substring(2, 4), 16),
-        b: parseInt(color.substring(4, 6), 16)
-    };
+	color = color.substring(1); // remove #
+	return {
+		r: parseInt(color.substring(0, 2), 16),
+		g: parseInt(color.substring(2, 4), 16),
+		b: parseInt(color.substring(4, 6), 16)
+	};
 }
 
 function dec2hex(n) {
-    var hex = n.toString(16);
-    if (hex.length < 2) {
-        return '0' + hex;
-    }
-    return hex;
+	var hex = n.toString(16);
+	if (hex.length < 2) {
+		return '0' + hex;
+	}
+	return hex;
 }
 
 function rgb2yuv(rgb){
-  var y = clamp(rgb.r *  0.29900 + rgb.g *  0.587   + rgb.b * 0.114);
-  var u = clamp(rgb.r * -0.16874 + rgb.g * -0.33126 + rgb.b * 0.50000 + 128);
-  var v = clamp(rgb.r *  0.50000 + rgb.g * -0.41869 + rgb.b * -0.08131 + 128);
-  return {y:y, u:u, v:v};
+	var y = clamp(rgb.r *  0.29900 + rgb.g *  0.587   + rgb.b * 0.114);
+	var u = clamp(rgb.r * -0.16874 + rgb.g * -0.33126 + rgb.b * 0.50000 + 128);
+	var v = clamp(rgb.r *  0.50000 + rgb.g * -0.41869 + rgb.b * -0.08131 + 128);
+	return {y:y, u:u, v:v};
 }
 
 function yuv2rgb(yuv){
-  var y = yuv.y;
-  var u = yuv.u;
-  var v = yuv.v;
-  var r = clamp(y + (v - 128) *  1.40200);
-  var g = clamp(y + (u - 128) * -0.34414 + (v - 128) * -0.71414);
-  var b = clamp(y + (u - 128) *  1.77200);
-  return {r:r,g:g,b:b};
+	var y = yuv.y;
+	var u = yuv.u;
+	var v = yuv.v;
+	var r = clamp(y + (v - 128) *  1.40200);
+	var g = clamp(y + (u - 128) * -0.34414 + (v - 128) * -0.71414);
+	var b = clamp(y + (u - 128) *  1.77200);
+	return {r:r,g:g,b:b};
 }
-    
+
 function clamp(n){
-    if (n<0) { return 0;}
-    if (n>255) { return 255;}
-    return Math.floor(n);
+	if (n<0) { return 0;}
+	if (n>255) { return 255;}
+	return Math.floor(n);
 }
 
 
@@ -610,17 +623,4 @@ function sliders() {
 		}
 
 	}
-}
-
-
-
-
-
-
-
-
-// Cheap not-unique UUID generator
-// Use uuidv4.js instead
-function cheapID() {
-	return Math.random().toString(36).substr(2, 5);
 }

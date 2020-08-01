@@ -1,9 +1,9 @@
 :root {
-    font-family: 'Verdana', sans-serif;
+	font-family: 'Verdana', sans-serif;
 	font-size: 18px;
 
 	--offWhite: #F9F9F9;
-    --offBlack: #202020;
+	--offBlack: #202020;
 }
 
 html { padding-bottom: 100px; }
@@ -162,7 +162,7 @@ div { cursor: default; }
 	background: #202020;
 	border: 1px solid #303030;
 }
- 
+
 .miniTESbutton:disabled:hover {
 	background: #222222;
 }

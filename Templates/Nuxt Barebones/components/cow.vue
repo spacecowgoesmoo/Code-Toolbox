@@ -16,9 +16,9 @@
 	export default {
 		props: {
 			cowText: {
-    			type: String,
-    			default: ""
-    		}
-    	}
-    }
+				type: String,
+				default: ""
+			}
+		}
+	}
 </script>
